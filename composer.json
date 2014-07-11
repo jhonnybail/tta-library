@@ -1,0 +1,22 @@
+{
+    "name": "temtudoaqui/library",
+    "type": "library",
+    "description": "Library for TemTudoAqui projects",
+    "keywords": ["utils", "event", "generic"],
+    "homepage": "http://www.temtudoaqui.info",
+    "authors": [
+        {"name": "Jonathan Bogdanovicz", "email": "jhonnybail@gmail.com"}
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "TemTudoAqui\\": "lib/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
+    },
+    "archive": {
+        "exclude": [".travis.yml", "build.properties", "composer.phar"]
+    }
+}
