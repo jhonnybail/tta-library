@@ -82,10 +82,10 @@ class File extends Object implements
 		$this->data			= null;
 
 		$this->attach(Event::LOAD, function(Event $eve){
-			$eve->getTarget()->url 		= $eve->getTarget()->urlRequest->url;
-			$info = pathinfo($eve->getTarget()->url);
-			$eve->getTarget()->fileName 	= new String(@$info['filename']);
-			$eve->getTarget()->extension 	= new String(@$info['extension']);
+            $eve->getTarget()->url 		    = $eve->getTarget()->urlRequest->url;
+            $name                           = explode(".", basename($this->urlRequest->url));
+			$eve->getTarget()->fileName 	= new String(str_replace(".".$name[count($name)-1], "", basename($this->urlRequest->url)));
+			$eve->getTarget()->extension 	= new String($name[count($name)-1]);
 		});
 		
 		if(!empty($urlRequest)){

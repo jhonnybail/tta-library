@@ -164,28 +164,28 @@ class ImageFile extends File
 	 /**
 	 * Retorna o objeto Image redimensionado de acordo com os parâmetros passado.
      * 
-	 * @param   int	                                    $l
-	 * @param   int|null	                            $a
+	 * @param   int	                                    $width
+	 * @param   int|null	                            $height
 	 * @param   bool	                                $perspective
 	 * @throws  \TemTudoAqui\InvalidArgumentException
      * @return  \TemTudoAqui\Utils\Data\ImageFile
 	 */ 
-	public function resize($l, $a = null, $perspective = true)
+	public function resize($width, $height = null, $perspective = true)
     {
 		
 		if(is_resource($this->image)){
 		
-			if(Number::VerifyNumber($l))
-				$l = Number::VerifyNumber($l);
-			elseif($l == null)
-				$l = Number::VerifyNumber($this->width);
+			if(Number::VerifyNumber($width))
+                $width = Number::VerifyNumber($width);
+			elseif($width == null)
+                $width = Number::VerifyNumber($this->width);
 			else
 				throw new InvalidArgumentException(1, __CLASS__, 156);
 			
-			if(Number::VerifyNumber($a))
-				$a = Number::VerifyNumber($a);
-			elseif($a == null)
-				$a = Number::VerifyNumber($this->height);
+			if(Number::VerifyNumber($height))
+                $height = Number::VerifyNumber($height);
+			elseif($height == null)
+                $height = Number::VerifyNumber($this->height);
 			else
 				throw new InvalidArgumentException(1, __CLASS__, 156);
 				
@@ -193,15 +193,15 @@ class ImageFile extends File
 			$cL = Number::VerifyNumber($this->width);
 			$cA = Number::VerifyNumber($this->height);
 			
-			if(!empty($l) && $cL > $l && $cL != $l){
-				$d = $cL/$l;
+			if(!empty($width) && $cL > $width && $cL != $width){
+				$d = $cL/$width;
 				$cL /= $d;
 				
 				if($perspective) $cA /= $d;
 			}
 			
-			if(!empty($a) && $cA > $a && $cA != $a){
-				$d = $cA/$a;
+			if(!empty($height) && $cA > $height && $cA != $height){
+				$d = $cA/$height;
 				$cA /= $d;
 				  
 				if($perspective) $cL /= $d;
@@ -282,26 +282,26 @@ class ImageFile extends File
 	 /**
 	 * Retorna o objeto Image recortado de acordo com os parâmetros informados.
      * 
-	 * @param   int	                                $w
-	 * @param   int	                                $h
+	 * @param   int	                                $width
+	 * @param   int	                                $height
 	 * @param   int	                                $x
 	 * @param   int	                                $y
      * @throws  \TemTudoAqui\InvalidArgumentException
      * @return  \TemTudoAqui\Utils\Data\ImageFile
 	 */ 
-	public function cut($w, $h, $x = 0, $y = 0)
+	public function cut($width, $height, $x = 0, $y = 0)
     {
 		
 		if(is_resource($this->image)){
 		
-			if(Number::VerifyNumber($w))
-				$w = Number::VerifyNumber($w);
-			elseif($w != 0)
+			if(Number::VerifyNumber($width))
+                $width = Number::VerifyNumber($width);
+			elseif($width != 0)
 				throw new InvalidArgumentException(1, __CLASS__, 257);
 			
-			if(Number::VerifyNumber($h))
-				$h = Number::VerifyNumber($h);
-			elseif($h != 0)
+			if(Number::VerifyNumber($height))
+                $height = Number::VerifyNumber($height);
+			elseif($height != 0)
 				throw new InvalidArgumentException(1, __CLASS__, 257);
 				
 			if(Number::VerifyNumber($x))
@@ -314,7 +314,7 @@ class ImageFile extends File
 			elseif($y != 0)
 				throw new InvalidArgumentException(1, __CLASS__, 257);
 			
-			$img = new ImageFile($w, $h);
+			$img = new ImageFile($width, $height);
 			$img->merge($this, 0, 0, $x, $y);
 			
 			return $img;

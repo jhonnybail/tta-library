@@ -75,7 +75,7 @@ class URLRequest extends Generic
     {
 		
 		parent::__construct();
-		
+
 		$this->listFile = new ArrayObject(array('jpg', 'jpeg', 'gif', 'png', 'bmp', 'txt', 'wav', 'mp3', 'wma', 'midi', 'pdf', 'php', 'html', 'js', 'json', 'xls', 'xlsx', 'doc', 'docx', 'otf', 'sql', 'ppt', 'pptx', 'psd', 'ai', 'cdr', 'ttf', 'wmv', 'avi', 'mpg', 'mpeg', 'mov', 'mkv', 'rmvb', 'swf', 'swc', 'fla', 'as', 'rar', 'zip', '7z'));
 		
 		if(empty($url))
@@ -121,7 +121,7 @@ class URLRequest extends Generic
      */
 	private function getHeaders()
     {
-		
+
 		$headers = new ArrayObject((array)@get_headers($this->url, 1));
 		if($headers->length() > 0){
 			if(preg_match('/^HTTP\/\d\.\d\s+(200|301|302)/', $headers[0]))
@@ -143,18 +143,19 @@ class URLRequest extends Generic
     	
 		if(!file_exists($this->url))
 			return false;
-		
+
+
 		if(System::GetVariable('SERVER_PROTOCOL')->search("HTTP"))
 			$protocol = 'http';
 		elseif(System::GetVariable('SERVER_PROTOCOL')->search("HTTPS"))
 			$protocol = 'https';
         else
             $protocol = System::GetVariable('SERVER_PROTOCOL');
-			
+
 		$url 		= $this->url;
 		$newURL		= $url->replace(System::GetVariable('DOCUMENT_ROOT'), $protocol."://".System::GetVariable('HTTP_HOST'));
 		$this->url	= $newURL;
-		$this->requestHeaders = $this->requestHeaders->concat((array) $this->getHeaders());
+		//$this->requestHeaders = $this->requestHeaders->concat((array) $this->getHeaders());
 		$this->url	= $url;
 
 		$this->requestHeaders->offsetSet(URLRequestHeader::CONTENTLENGTH, filesize($this->url));

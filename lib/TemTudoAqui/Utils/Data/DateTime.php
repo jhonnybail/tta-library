@@ -43,7 +43,7 @@ class DateTime extends \DateTime {
 	const	DATETIME_FULL		= 'c';
     const	DATETIME_LONG		= 'r';
 
-    const	EXT 		        = 'Y-m-d\TH:i:s';
+    const	EXT 		        = 'Y-m-d H:i:s';
 
     /**
      * Constructor

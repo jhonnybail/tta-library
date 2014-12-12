@@ -46,7 +46,7 @@ trait ObjectEventManager {
 
         $this->events[$event][] = $listener;
 
-        $this->events           = ArrayObject::ArrayOrderBy($this->events[$event], 'priority', 'ASC');
+        $this->events[$event]   = ArrayObject::ArrayOrderBy($this->events[$event], 'priority', 'ASC');
 
     }
 

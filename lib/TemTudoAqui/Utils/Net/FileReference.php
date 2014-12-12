@@ -38,19 +38,19 @@ class FileReference extends Generic
      */
 	public static function Save(IFileObject $file, $newPath = '', $newName = '', $newExtension = '')
     {
-		
+
 		if(!empty($newName))
 			$file->fileName = new String($newName);
 		else
 			if($file->fileName == '')
 				throw new InvalidArgumentException(2, __CLASS__, 31, 'O nome do arquivo está em branco');
-	 	
+
 		if(!empty($newExtension))
 			$file->extension = new String($newExtension);
 		else
 			if($file->extension == '')
 				throw new InvalidArgumentException(2, __CLASS__, 31, 'A extensão do tipo arquivo está em branco');
-		 
+
 		$newPath = new String((string) $newPath);
 		$dirName = new String(dirname($file->url));
 
@@ -94,9 +94,9 @@ class FileReference extends Generic
 					$f = fopen(((string) $newPath)."/".$file->fileName.".".$file->extension, 'w');
 					fwrite($f, (string) $file->getData());
 					fclose($f);
-					
+
 					$urlR = new URLRequest(((string) $newPath)."/".$file->fileName.".".$file->extension);
-					
+
 					if($file->extension == 'html' || $file->extension == 'htm' || $file->extension == 'xhtml')
 						return new HTMLFile($urlR);
 					elseif($file->extension == 'xml')
@@ -138,13 +138,13 @@ class FileReference extends Generic
 			}elseif(!file_exists($newPath))
                 throw new NetException(7, __CLASS__, 31);
             else{
-				
+
 				$f = fopen($newPath."/".$file->fileName.".".$file->extension, 'w+');
 				fwrite($f, (string) $file->getData());
 				fclose($f);
-				
+
 				$urlR = new URLRequest($newPath."/".$file->fileName.".".$file->extension);
-					
+
 				if($file->extension == 'html' || $file->extension == 'htm' || $file->extension == 'xhtml')
 					return new HTMLFile($urlR);
 				elseif($file->extension == 'xml')
@@ -245,13 +245,13 @@ class FileReference extends Generic
 			$path = $file->toString();
 		elseif(!empty($file))
 			$path = $file;
-			
+
 		$path = new String((string) $path);	
-		
+
 		if(!empty($path)){
-				
+
 			$urlR = new URLRequest($path);
-				
+
 			if($path->search("http://"))
 				throw new NetException(8, __CLASS__, 220);
 			elseif($urlR->getType() != URLRequest::URLFILETYPE)
@@ -259,7 +259,7 @@ class FileReference extends Generic
 			elseif(file_exists($path)){
 					
 				if(!empty($mode)){
-					if(!@chmod($path, "0".$mode)){
+					if(!chmod($path, $mode)){
 						throw new NetException(11, __CLASS__, 220);
 					}
 				}else
