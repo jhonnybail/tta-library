@@ -11,11 +11,6 @@
     "autoload": {
         "psr-0": { "TemTudoAqui\\": "lib/" }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.0.x-dev"
-        }
-    },
     "archive": {
         "exclude": [".travis.yml", "build.properties", "composer.phar"]
     }
