@@ -1,6 +1,7 @@
 {
     "name": "temtudoaqui/library",
     "type": "library",
+    "version": "1.0.0",
     "description": "Library for TemTudoAqui projects",
     "keywords": ["utils", "event", "generic"],
     "homepage": "http://www.temtudoaqui.info",
@@ -10,11 +11,6 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": { "TemTudoAqui\\": "lib/" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.0.x-dev"
-        }
     },
     "archive": {
         "exclude": [".travis.yml", "build.properties", "composer.phar"]
