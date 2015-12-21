@@ -44,6 +44,8 @@ class DateTime extends \DateTime {
     const	DATETIME_LONG		= 'r';
 
     const	EXT 		        = 'Y-m-d H:i:s';
+    const	DATEEXT 		    = 'Y-m-d';
+    const	TIMEEXT 		    = 'H:i:s';
 
     /**
      * Constructor
@@ -81,6 +83,13 @@ class DateTime extends \DateTime {
      */
 	public function addDate($year, $month = 0, $day = 0)
     {
+
+        if($year instanceof Number)
+            $year = $year->getValue();
+        if($month instanceof Number)
+            $month = $month->getValue();
+        if($day instanceof Number)
+            $day = $day->getValue();
 		
 		if($year > 0)
 			$this->add(new \DateInterval("P".$year."Y"));
@@ -103,7 +112,14 @@ class DateTime extends \DateTime {
      */
 	public function subDate($year, $month = 0, $day = 0)
     {
-		
+
+        if($year instanceof Number)
+            $year = $year->getValue();
+        if($month instanceof Number)
+            $month = $month->getValue();
+        if($day instanceof Number)
+            $day = $day->getValue();
+
 		if($year > 0)
 			$this->sub(new \DateInterval("P".$year."Y"));
 		if($month > 0)
@@ -125,7 +141,14 @@ class DateTime extends \DateTime {
      */
 	public function addTime($hour, $minute = 0, $second = 0)
     {
-		
+
+        if($hour instanceof Number)
+            $hour = $hour->getValue();
+        if($minute instanceof Number)
+            $minute = $minute->getValue();
+        if($second instanceof Number)
+            $second = $second->getValue();
+
 		if($hour > 0)
 			$this->add(new \DateInterval("PT".$hour."Y"));
 		if($minute > 0)
@@ -147,7 +170,14 @@ class DateTime extends \DateTime {
      */
 	public function subTine($hour, $minute = 0, $second = 0)
     {
-		
+
+        if($hour instanceof Number)
+            $hour = $hour->getValue();
+        if($minute instanceof Number)
+            $minute = $minute->getValue();
+        if($second instanceof Number)
+            $second = $second->getValue();
+
 		if($hour > 0)
 			$this->sub(new \DateInterval("PT".$hour."Y"));
 		if($minute > 0)

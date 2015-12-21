@@ -109,7 +109,8 @@ class Exception extends \Exception
 		$this->messages[23] = 'Pontos requeridos maior que a quantidade de pontos no pré-pago';
 		$this->messages[24] = 'Não exitem créditos disponiveis para o cliente informado';
 		$this->messages[25] = 'Não há saldo para realizar esta operação';
-		$this->messages[26] = 'Objeto não encontrado';
+        $this->messages[26] = 'Objeto não encontrado';
+        $this->messages[27] = 'Registro já existe';
     	
     }
     
